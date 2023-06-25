@@ -2,7 +2,7 @@ import React from "react";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  htmlRef: object;
+  htmlRef?: React.LegacyRef<HTMLTextAreaElement>;
 }
 
 export default function Input({

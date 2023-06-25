@@ -2,7 +2,7 @@ import React from "react";
 
 export interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  htmlRef: object;
+  htmlRef?: React.LegacyRef<HTMLTextAreaElement>;
 }
 
 export default function TextArea({

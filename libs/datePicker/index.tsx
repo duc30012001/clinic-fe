@@ -5,7 +5,7 @@ import Datepicker from "tailwind-datepicker-react";
 
 export interface DatePickerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  htmlRef: object;
+  htmlRef?: React.LegacyRef<HTMLTextAreaElement>;
 }
 
 const options = {

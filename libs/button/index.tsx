@@ -1,7 +1,9 @@
 import React from "react";
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  htmlRef?: React.LegacyRef<HTMLTextAreaElement>;
+}
 
 export function Button({ children, className, ...props }: ButtonProps) {
   return (
