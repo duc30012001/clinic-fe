@@ -1,3 +1,5 @@
+const { i18n } = require("./next-i18next.config");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -14,6 +16,7 @@ const nextConfig = {
     domains: ["icdn.dantri.com.vn"],
     minimumCacheTTL: 1500000,
   },
+  i18n,
 };
 
 module.exports = nextConfig;

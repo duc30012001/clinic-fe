@@ -1,7 +1,7 @@
 "use client";
 
 import { DatePickerField, InputField, TextAreaField } from "@/components/form";
-import { useYupValidationResolver } from "@/hooks";
+import { useTranslate, useYupValidationResolver } from "@/hooks";
 import { Button } from "@/libs/button";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -17,13 +17,15 @@ type BookingProps = {
   patientAddress: string;
 };
 
-const validationSchema = yup.object({
-  fullName: yup.string().required("Vui lòng nhập họ tên"),
-  reasons: yup.string().required("Vui lòng nhập lý do đến khám"),
-  patientAddress: yup.string().required("Vui lòng nhập địa chỉ liên lạc"),
-});
-
 export default function BookingForm({}: Props) {
+  const { messages } = useTranslate();
+
+  const validationSchema = yup.object({
+    fullName: yup.string().required(messages("validation.inputRequired")),
+    reasons: yup.string().required(messages("validation.inputRequired")),
+    patientAddress: yup.string().required(messages("validation.inputRequired")),
+  });
+
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, control } = useForm<BookingProps>({ resolver });
 

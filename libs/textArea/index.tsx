@@ -1,18 +1,9 @@
-import { TypeFunction } from "@/utils/types";
-import { HTMLInputTypeAttribute } from "react";
+import React from "react";
 
-type Props = {
-  name: string;
-  placeholder?: string;
-  type?: HTMLInputTypeAttribute;
-  value?: string;
-  defaultValue?: string;
-  className?: string;
-  onChange?: TypeFunction;
-  onBlur?: TypeFunction;
-  htmlRef: any;
-  rows?: number;
-};
+export interface TextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  htmlRef: object;
+}
 
 export default function TextArea({
   name,
@@ -20,7 +11,7 @@ export default function TextArea({
   rows = 3,
   htmlRef,
   ...props
-}: Props) {
+}: TextAreaProps) {
   return (
     <textarea
       id={name}

@@ -1,6 +1,6 @@
 import Container from "@/components/container";
+import LoginButton from "./authMenu";
 import Hotline from "./hotline";
-import LoginButton from "./loginButton";
 import MenuDesktop from "./menuDesktop";
 import MenuMobile from "./menuMobile";
 

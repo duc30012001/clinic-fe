@@ -1,16 +1,9 @@
-import { TypeFunction } from "@/utils/types";
-import { HTMLInputTypeAttribute } from "react";
+import React from "react";
 
-type Props = {
-  name: string;
-  placeholder?: string;
-  type?: HTMLInputTypeAttribute;
-  value?: string;
-  className?: string;
-  onChange?: TypeFunction;
-  onBlur?: TypeFunction;
-  htmlRef: any;
-};
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  htmlRef: object;
+}
 
 export default function Input({
   name,
@@ -19,7 +12,7 @@ export default function Input({
   className,
   htmlRef,
   ...props
-}: Props) {
+}: InputProps) {
   return (
     <input
       type={type}

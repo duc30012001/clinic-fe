@@ -16,6 +16,8 @@ export function Section({ dataNews, title }: Props) {
               alt={item.title}
               src={item.thumbnailUrl}
               className="w-40 rounded-md md:w-80"
+              width={160}
+              height={100}
             />
             <div>
               <h3 className="line-clamp-3 text-lg font-semibold">

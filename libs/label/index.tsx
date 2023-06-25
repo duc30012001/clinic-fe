@@ -1,13 +1,17 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
-type Props = {
-  htmlFor?: string;
-  className?: string;
+export interface LabelProps
+  extends React.LabelHTMLAttributes<HTMLLabelElement> {
   label?: ReactNode;
   required?: boolean;
-};
+}
 
-export default function Label({ htmlFor, label, className, required }: Props) {
+export default function Label({
+  htmlFor,
+  label,
+  className,
+  required,
+}: LabelProps) {
   return (
     (label && (
       <label

@@ -1,13 +1,10 @@
 "use client";
 
-import { FieldProps, TypeFunction } from "@/utils/types";
-import { useState } from "react";
+import React, { useState } from "react";
 import Datepicker from "tailwind-datepicker-react";
 
-interface Props extends FieldProps {
-  value: Date;
-  onChange: TypeFunction;
-  onBlur: TypeFunction;
+export interface DatePickerProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   htmlRef: object;
 }
 
@@ -39,7 +36,11 @@ const options = {
   language: "vi",
 };
 
-export default function DatePicker({ name, htmlRef, ...props }: Props) {
+export default function DatePicker({
+  name,
+  htmlRef,
+  ...props
+}: DatePickerProps) {
   const [show, setShow] = useState<boolean>(false);
 
   const handleClose = (state: boolean) => {

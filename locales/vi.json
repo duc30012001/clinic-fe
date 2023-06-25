@@ -1,0 +1,85 @@
+{
+  "sign": {
+    "welcome": "Chào mừng đến với"
+  },
+  "common": {
+    "dontHaveAccount": "Bạn chưa có tài khoản?",
+    "signup": "Đăng ký",
+    "password": "Mật khẩu",
+    "forgetPassword": "Quên mật khẩu?",
+    "emailAddress": "Địa chỉ Email",
+    "login": "Đăng nhập",
+    "name": "Họ tên",
+    "firstName": "Họ",
+    "lastName": "Tên",
+    "retypePassword": "Nhập lại mật khẩu",
+    "iAgreeTo": "Tôi đồng ý với",
+    "termConditions": "Điều khoản",
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "returnSigInPage": "Trở về trang đăng nhập",
+    "signInHere": "Đăng nhập ở đây",
+    "signIn": "Đăng nhập",
+    "forgetPasswordHeading": "Quên mật khẩu?",
+    "email": "Email",
+    "birthday": "Ngày sinh",
+    "alreadyHavePassword": "Đã có mật khẩu?",
+    "forgetPasswordText": "Lấy lại mật khẩu",
+    "forgetPasswordTextTwo": "Nhập địa chỉ email của bạn.",
+    "submit": "Xác nhận",
+    "notifications": "Thông báo",
+    "create": "Thêm mới",
+    "edit": "Sửa thông tin",
+    "phone": "Điện thoại",
+    "department": "Phòng ban",
+    "role": "Vị trí",
+    "oldPassword": "Mật khẩu cũ",
+    "newPassword": "Mật khẩu mới",
+    "noRecordFound": "Không có dữ liệu",
+    "accessDenied": "Bạn không có quyền xem nội dung này",
+    "cancel": "Huỷ",
+    "upload": "Tải lên",
+    "other": "Khác"
+  },
+  "userProfile": {
+    "myProfile": "Tài khoản cá nhân",
+    "logout": "Đăng xuất",
+    "personalInfo": "Thông tin cá nhân",
+    "changePassword": "Đổi mật khẩu",
+    "information": "Thông tin",
+    "song": "Bài hát",
+    "social": "Mạng xã hội"
+  },
+  "validation": {
+    "emailFormat": "Vui lòng nhập đúng định dạng Email!",
+    "emailRequired": "Vui lòng nhập Email!",
+    "passwordRequired": "Vui lòng nhập mật khẩu!",
+    "passwordFormat": "Mật khẩu phải bao gồm chữ cái viết hoa và có ít nhất 6 kí tự",
+    "firstNameRequired": "Vui lòng nhập họ!",
+    "lastNameRequired": "Vui lòng nhập tên!",
+    "reTypePassword": "Vui lòng nhập lại mật khẩu!",
+    "birthdayRequired": "Vui lòng chọn ngày sinh",
+    "passwordMisMatch": "Mật khẩu không khớp!",
+    "enterOldPassword": "Vui lòng nhập mật khẩu cũ!",
+    "enterNewPassword": "Vui lòng nhập mật khẩu mới!",
+    "selectRequired": "Vui lòng chọn thông tin!",
+    "radioRequired": "Vui lòng chọn thông tin!",
+    "inputRequired": "Vui lòng nhập thông tin!"
+  },
+  "dashboard": {
+    "messages": "Tin nhắn"
+  },
+  "message": {
+    "somethingWentWrong": "Đã xảy ra lỗi, vui lòng thử lại!",
+    "updateSuccessfully": "Cập nhật thông tin thành công!",
+    "createSuccessfully": "Thêm thành công!",
+    "deleteSuccessfully": "Xoá thành công!"
+  },
+  "sidebar": {
+    "categories": "Danh mục",
+    "management": "Quản trị hệ thống",
+    "contents": "Nội dung",
+    "songs": "Bài hát",
+    "home": "Trang chủ",
+    "dashboard": "Tổng quan"
+  }
+}
