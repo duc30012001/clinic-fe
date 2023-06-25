@@ -47,7 +47,8 @@
     "changePassword": "Đổi mật khẩu",
     "information": "Thông tin",
     "song": "Bài hát",
-    "social": "Mạng xã hội"
+    "social": "Mạng xã hội",
+    "admin": "Quản trị"
   },
   "validation": {
     "emailFormat": "Vui lòng nhập đúng định dạng Email!",
