@@ -9,7 +9,7 @@ export default function Input({
   name,
   type,
   placeholder,
-  className,
+  className = "",
   htmlRef,
   ...props
 }: InputProps) {

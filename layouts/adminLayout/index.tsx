@@ -1,6 +1,9 @@
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/router";
 import React from "react";
+import Content from "./content";
+import Footer from "./footer";
+import Header from "./header";
 
 type Props = {
   children: React.ReactNode;
@@ -16,5 +19,11 @@ export function AdminLayout({ children }: Props) {
 
   if (!isAuthenticated) return <div>Loading...</div>;
 
-  return <div>ProtectedLayout{children}</div>;
+  return (
+    <div>
+      <Header />
+      <Content>{children}</Content>
+      <Footer />
+    </div>
+  );
 }

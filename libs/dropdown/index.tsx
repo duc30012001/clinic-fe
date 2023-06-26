@@ -1,13 +1,20 @@
 import { Menu, Transition } from "@headlessui/react";
+import clsx from "clsx";
 import React from "react";
 
 type Props = {
   data: Array<any>;
   children: React.ReactNode;
   renderItem: (item: any, index?: number) => React.ReactNode;
+  placement?: "left" | "right";
 };
 
-const Dropdown = ({ data, renderItem, children }: Props) => {
+const Dropdown = ({
+  data,
+  renderItem,
+  children,
+  placement = "right",
+}: Props) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -22,7 +29,15 @@ const Dropdown = ({ data, renderItem, children }: Props) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items
+          className={clsx(
+            {
+              "right-0": placement === "right",
+              "left-0": placement === "left",
+            },
+            "absolute  mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          )}
+        >
           <div className="px-1 py-1 ">
             {data.map((item, index) => (
               <Menu.Item key={item.id}>{renderItem(item, index)}</Menu.Item>
