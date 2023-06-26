@@ -1,12 +1,12 @@
 const { i18n } = require("./next-i18next.config");
+require("dotenv").config;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    // ENDPOINT: "http://192.168.1.32:8000/api",
-    ENDPOINT: "https://fe2.relaxingmusic.top/api",
-    GOOGLE_MAP_API_KEY: "AIzaSyBdqhsWzvFTwmd1ZEMjtxcKOQCDFQL_f9w",
+    API_URL: "https://fe2.relaxingmusic.top",
+    GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY,
     PHONE_NUMBER: "0905 056 883",
     ADDRESS: "Đà Nẵng",
     EMAIL: "tranvanchuong@gmail.com",

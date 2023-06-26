@@ -10,7 +10,7 @@ export default function MenuDesktop({ menu }: Props) {
     <ul className="hidden h-full grow gap-5 md:flex md:items-center">
       {menu.map((item) => (
         <li key={item.id}>
-          <Link href={item.pathname}>
+          <Link href={item.pathname} className="hover:text-blue-700">
             <span className="px-2">{item.name}</span>
           </Link>
         </li>
