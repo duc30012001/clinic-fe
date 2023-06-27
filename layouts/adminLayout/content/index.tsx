@@ -8,7 +8,7 @@ type Props = {
 const Content = ({ children }: Props) => {
   return (
     <Container>
-      <div className="py-10">{children}</div>
+      <div className="">{children}</div>
     </Container>
   );
 };

@@ -31,6 +31,7 @@
     "next": "13.4.7",
     "postcss": "8.4.24",
     "rc-drawer": "^6.3.0",
+    "rc-select": "^14.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.0",

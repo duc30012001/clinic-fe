@@ -20,7 +20,7 @@ export function AdminLayout({ children }: Props) {
   if (!isAuthenticated) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="bg-slate-50">
       <Header />
       <Content>{children}</Content>
       <Footer />

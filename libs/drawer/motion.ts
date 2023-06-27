@@ -1,5 +1,4 @@
 import type { DrawerProps } from "rc-drawer";
-// import "./motion.less";
 
 export const maskMotion: DrawerProps["maskMotion"] = {
   motionAppear: true,

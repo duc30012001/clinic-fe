@@ -22,7 +22,7 @@ export const DropdownItem = ({ item }) => {
 
 const NavbarMobile = ({ routes }: Props) => {
   return (
-    <div className="ml-auto block md:hidden">
+    <div className="ml-auto block lg:hidden">
       <Dropdown
         data={routes}
         renderItem={(item) => <DropdownItem item={item} />}

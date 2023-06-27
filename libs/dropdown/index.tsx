@@ -35,7 +35,7 @@ const Dropdown = ({
               "right-0": placement === "right",
               "left-0": placement === "left",
             },
-            "absolute  mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            "absolute z-10  mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           )}
         >
           <div className="px-1 py-1 ">
