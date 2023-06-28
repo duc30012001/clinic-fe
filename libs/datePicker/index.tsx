@@ -6,9 +6,10 @@ import Datepicker from "tailwind-datepicker-react";
 export interface DatePickerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   htmlRef?: React.LegacyRef<HTMLTextAreaElement>;
+  options?: object;
 }
 
-const options = {
+const dataPickerOption = {
   // title: "Demo Title",
   autoHide: true,
   todayBtn: false,
@@ -31,7 +32,7 @@ const options = {
     // prev: () => <span>Previous</span>,
     // next: () => <span>Next</span>,
   },
-  datepickerClassNames: "focus-visible:border-blue-500",
+  datepickerClassNames: "",
   defaultDate: new Date(),
   language: "vi",
 };
@@ -39,6 +40,7 @@ const options = {
 export default function DatePicker({
   name,
   htmlRef,
+  options,
   ...props
 }: DatePickerProps) {
   const [show, setShow] = useState<boolean>(false);
@@ -52,7 +54,7 @@ export default function DatePicker({
       <Datepicker
         name={name}
         id={name}
-        options={options}
+        options={{ ...dataPickerOption, ...options }}
         show={show}
         setShow={handleClose}
         ref={htmlRef}

@@ -1,26 +1,27 @@
-import RcSelect, { SelectProps } from "rc-select";
+import ReactSelect from "react-select";
 
-const incidencesStateResource = [
-  { value: 4, label: "Not Identified" },
-  { value: 3, label: "Closed" },
-  { value: 2, label: "Communicated" },
-  { value: 6, label: "Identified" },
-  { value: 1, label: "Resolved" },
-  { value: 5, label: "Cancelled" },
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
 ];
 
-const sorterByLabel = (optionA, optionB) =>
-  optionA.label.localeCompare(optionB.label);
+const classNames =
+  "mt-2 block w-full appearance-none !border-slate-200 !rounded-md bg-white px-1 !border text-slate-900 shadow-sm ring-1 !ring-slate-300 placeholder:text-slate-400 sm:text-sm";
+const unFocusClassNames = "" + ` ${classNames}`;
+const focusClassNames = "outline-none ring-2 ring-blue-500" + ` ${classNames}`;
 
-const Select = (props: SelectProps) => {
+const Select = (props) => {
   return (
-    <RcSelect
-      showSearch
-      style={{ width: 500 }}
-      filterSort={sorterByLabel}
-      optionFilterProp="label"
-      options={incidencesStateResource}
-    ></RcSelect>
+    <ReactSelect
+      // defaultValue={selectedOption}
+      // onChange={setSelectedOption}
+      options={options}
+      classNames={{
+        control: (state) =>
+          state.isFocused ? focusClassNames : unFocusClassNames,
+      }}
+    />
   );
 };
 

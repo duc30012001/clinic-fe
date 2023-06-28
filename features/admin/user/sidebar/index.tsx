@@ -8,7 +8,7 @@ const Sidebar = (props: Props) => {
   return (
     <div>
       <SidebarBox title="Tìm theo email" hasDivider>
-        <Input className="py-2" />
+        <Input className="" />
       </SidebarBox>
       <SidebarBox title="Trạng thái" hasDivider>
         <Select />
