@@ -1,10 +1,19 @@
 import AppContainer from "@/components/appContainer";
-import Sidebar from "./sidebar";
+import useSWR from "swr";
+import UserSidebar from "./sidebar";
+import UserTable from "./table";
 
 type Props = {};
 
 const User = (props: Props) => {
-  return <AppContainer sidebarContent={<Sidebar />}>User</AppContainer>;
+  const { data } = useSWR("/user/list");
+  const dataSource = data?.data || [];
+  // const pagination = data.meta || {}
+  return (
+    <AppContainer sidebarContent={<UserSidebar />}>
+      <UserTable dataSource={dataSource} />
+    </AppContainer>
+  );
 };
 
 export default User;

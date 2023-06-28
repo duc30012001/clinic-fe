@@ -1,3 +1,4 @@
+import AppLoader from "@/components/appLoader";
 import { useAuth } from "@/hooks";
 import { useRouter } from "next/router";
 import React from "react";
@@ -17,7 +18,7 @@ export function AdminLayout({ children }: Props) {
     router.push("/auth/login");
   }
 
-  if (!isAuthenticated) return <div>Loading...</div>;
+  if (!isAuthenticated) return <AppLoader loading className="bg-white" />;
 
   return (
     <div className="bg-slate-50">

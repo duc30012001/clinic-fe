@@ -20,14 +20,12 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
     data: profile,
     error,
     mutate,
+    isLoading,
   } = useSWR("/user/profile", {
     dedupingInterval: 60 * 60 * 1000,
     revalidateOnFocus: false,
     ...option,
   });
-
-  const isAuthenticated = profile?.id;
-  const isLoading = profile === undefined && error === undefined;
 
   async function login(payload: LoginPayload) {
     try {
@@ -54,7 +52,7 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
     error,
     login,
     logout,
-    isAuthenticated,
+    isAuthenticated: Boolean(profile?.id),
     isLoading,
   };
 }
