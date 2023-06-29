@@ -50,7 +50,7 @@ export default function DatePicker({
   };
 
   return (
-    <div className="relative">
+    <div className="relative mt-2">
       <Datepicker
         name={name}
         id={name}

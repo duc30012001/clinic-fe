@@ -25,7 +25,7 @@ const Table: FC<TableProps> = ({ columns, data }) => {
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id} className="font-medium">
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="p-2 text-left">
+                <th key={header.id} className="border-l p-2 text-left">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
