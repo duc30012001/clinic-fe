@@ -1,6 +1,6 @@
+import { StatusSelect } from "@/components/select";
 import SidebarBox from "@/components/sidebarBox";
 import Input from "@/libs/input";
-import Select from "@/libs/select";
 
 type Props = {};
 
@@ -17,7 +17,7 @@ const UserSidebar = (props: Props) => {
         <Input className="" />
       </SidebarBox>
       <SidebarBox title="Trạng thái" hasDivider>
-        <Select options={options} />
+        <StatusSelect />
       </SidebarBox>
     </div>
   );

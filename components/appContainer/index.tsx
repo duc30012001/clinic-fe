@@ -7,9 +7,10 @@ import AppSidebar from "./appSidebar";
 type Props = {
   children: ReactNode;
   sidebarContent?: ReactNode;
+  headerContent?: ReactNode;
 };
 
-const AppContainer = ({ children, sidebarContent }: Props) => {
+const AppContainer = ({ children, sidebarContent, headerContent }: Props) => {
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
   const hasSidebar = Boolean(sidebarContent);
 
@@ -29,7 +30,11 @@ const AppContainer = ({ children, sidebarContent }: Props) => {
         </div>
       )}
       <div className="grow">
-        <AppHeader hasSidebar={hasSidebar} toggleDrawer={toggleDrawer} />
+        <AppHeader
+          headerContent={headerContent}
+          hasSidebar={hasSidebar}
+          toggleDrawer={toggleDrawer}
+        />
         <AppContent>{children}</AppContent>
       </div>
     </div>

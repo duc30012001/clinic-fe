@@ -1,21 +1,27 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
 import { FaBars } from "react-icons/fa";
 
 type Props = {
   toggleDrawer: () => void;
   hasSidebar: boolean;
-  actionContent?: ReactNode;
+  headerContent?: ReactNode;
 };
 
-const AppHeader = ({ toggleDrawer, hasSidebar, actionContent }: Props) => {
+const AppHeader = ({ toggleDrawer, hasSidebar, headerContent }: Props) => {
   return (
-    <div className="mb-4 h-6">
+    <div
+      className={clsx(
+        { "justify-end": hasSidebar },
+        "mb-4 flex h-6 items-center justify-between lg:justify-end"
+      )}
+    >
       {hasSidebar && (
         <button onClick={toggleDrawer} className="lg:hidden">
           <FaBars />
         </button>
       )}
-      {(actionContent && <div>{actionContent}</div>) || null}
+      {(headerContent && <div>{headerContent}</div>) || null}
     </div>
   );
 };

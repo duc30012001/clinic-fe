@@ -6,7 +6,7 @@ type Props = {
 };
 
 const AppContent = ({ children }: Props) => {
-  return <AppCard className="rounded-sm p-0">{children}</AppCard>;
+  return <AppCard className="p-0">{children}</AppCard>;
 };
 
 export default AppContent;

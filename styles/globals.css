@@ -4,3 +4,6 @@
 
 /* @import "react-toastify/dist/ReactToastify.css"; */
 @import "./drawer.css";
+body {
+  @apply text-sm;
+}

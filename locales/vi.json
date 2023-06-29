@@ -50,6 +50,11 @@
     "social": "Mạng xã hội",
     "admin": "Quản trị"
   },
+  "status": {
+    "active": "Kích hoạt",
+    "hidden": "Tạm ẩn",
+    "pending": "Chờ duyệt"
+  },
   "validation": {
     "emailFormat": "Vui lòng nhập đúng định dạng Email!",
     "emailRequired": "Vui lòng nhập Email!",

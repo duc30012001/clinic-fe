@@ -4,15 +4,16 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { FC } from "react";
 
 type TableProps = {
-  columns: ColumnDef<unknown, any>[];
-  dataSource: any;
+  data: any[];
+  columns: ColumnDef<any>[];
 };
 
-export default function Table({ columns, dataSource }: TableProps) {
+const Table: FC<TableProps> = ({ columns, data }) => {
   const table = useReactTable({
-    data: dataSource,
+    data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -24,7 +25,7 @@ export default function Table({ columns, dataSource }: TableProps) {
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id} className="font-medium">
               {headerGroup.headers.map((header) => (
-                <th key={header.id} className="p-2">
+                <th key={header.id} className="p-2 text-left">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -66,4 +67,6 @@ export default function Table({ columns, dataSource }: TableProps) {
       </table>
     </div>
   );
-}
+};
+
+export default Table;
