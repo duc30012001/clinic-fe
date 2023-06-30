@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export type TypeFunction = (event: any) => void;
 
@@ -14,4 +14,13 @@ export type NextPageWithLayout = NextPage & {
 
 export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
+};
+
+export type PageMeta = {
+  page: number;
+  take: number;
+  itemCount: number;
+  pageCount: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
 };

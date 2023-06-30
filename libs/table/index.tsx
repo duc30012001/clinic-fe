@@ -1,5 +1,7 @@
 import {
   ColumnDef,
+  OnChangeFn,
+  PaginationState,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -9,6 +11,9 @@ import { FC } from "react";
 type TableProps = {
   data: any[];
   columns: ColumnDef<any>[];
+  pagination?: PaginationState;
+  pageCount?: number;
+  onChangePage?: OnChangeFn<PaginationState>;
 };
 
 const Table: FC<TableProps> = ({ columns, data }) => {

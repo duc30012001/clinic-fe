@@ -4,6 +4,8 @@
 
 /* @import "react-toastify/dist/ReactToastify.css"; */
 @import "./drawer.css";
+@import "../libs//pagination/style.css";
+
 body {
   @apply text-sm;
 }
