@@ -1,15 +1,17 @@
-import { formattedDate, getStatus } from "@/helpers";
+import StatusButton from "@/components/statusButton";
+import { formattedDate } from "@/helpers";
 import { Button } from "@/libs/button";
 import Table from "@/libs/table";
 import { Status } from "@/utils/enum";
 import { TypeFunction } from "@/utils/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { FaEdit } from "react-icons/fa";
-import { User, UserList } from "../types";
+import { User, UserList } from "../../types";
 
 interface UserTableProps extends UserList {
   onEdit: TypeFunction;
-  current: number;
+  onUpdateStatus: TypeFunction;
+  current?: number;
   pageSize: number;
 }
 
@@ -18,13 +20,14 @@ const UserTable = ({
   onEdit,
   current,
   pageSize,
+  onUpdateStatus,
 }: UserTableProps) => {
   const columns: ColumnDef<User>[] = [
     {
       accessorKey: "#",
       header: "#",
       cell: (info) => {
-        const number = pageSize * (current - 1) + info.row.index + 1;
+        const number = pageSize * ((current || 0) - 1) + info.row.index + 1;
         return number;
       },
     },
@@ -62,8 +65,14 @@ const UserTable = ({
       accessorKey: "status",
       header: "Status",
       cell: (info) => {
-        const status = getStatus(info.renderValue() as Status);
-        return status;
+        const record = info.row.original;
+        const status = info.renderValue() as Status;
+        return (
+          <StatusButton
+            value={status}
+            onChange={(value) => onUpdateStatus({ value, record })}
+          />
+        );
       },
     },
     {

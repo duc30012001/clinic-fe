@@ -11,8 +11,8 @@ type Props = {
 };
 
 const AppSidebar = ({ toggleDrawer, isOpenDrawer, sidebarContent }: Props) => {
-  const { asPath } = useRouter();
-  const currentRoute = adminRoutes.find((item) => item.pathname === asPath);
+  const { pathname } = useRouter();
+  const currentRoute = adminRoutes.find((item) => item.pathname === pathname);
   const routeLabel = currentRoute?.label || "";
   return (
     <div>

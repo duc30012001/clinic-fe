@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { ReactNode } from "react";
+import { Order } from "../enum";
 
 export type TypeFunction = (event: any) => void;
 
@@ -24,3 +25,12 @@ export type PageMeta = {
   hasPreviousPage: boolean;
   hasNextPage: boolean;
 };
+
+export interface CommonParams {
+  page: number;
+  take: number;
+  search: string;
+  order: Order;
+  orderBy: string;
+  columns: string;
+}

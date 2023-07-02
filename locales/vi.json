@@ -53,7 +53,11 @@
   "status": {
     "active": "Kích hoạt",
     "hidden": "Tạm ẩn",
-    "pending": "Chờ duyệt"
+    "pending": "Chờ duyệt",
+    "label": "Trạng thái"
+  },
+  "form": {
+    "searchPlaceholder": "Tìm kiếm..."
   },
   "validation": {
     "emailFormat": "Vui lòng nhập đúng định dạng Email!",

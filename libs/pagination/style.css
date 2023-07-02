@@ -305,8 +305,10 @@
   cursor: not-allowed;
 }
 
-.rc-pagination-prev {
-  @apply flex;
+.rc-pagination-prev,
+.rc-pagination-next {
+  @apply inline-flex;
   @apply items-center;
   @apply justify-center;
+  @apply text-xl;
 }

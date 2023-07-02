@@ -1,16 +1,11 @@
 import axiosClient, { authApi } from "@/apiClient";
 import { showNotification } from "@/helpers";
-import { LoginPayload } from "@/utils/types";
+import { ErrorResponse, LoginPayload } from "@/utils/types";
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { PublicConfiguration } from "swr/_internal";
 import { useTranslate } from "./useTranslate";
-
-interface ErrorResponse {
-  message: string;
-  // Add any other properties you expect in the error response
-}
 
 export function useAuth(option?: Partial<PublicConfiguration>) {
   const { messages } = useTranslate();

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
+
+export type InputChangeEvent = ChangeEvent<HTMLInputElement>;
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {

@@ -1,25 +1,69 @@
 import AppContainer from "@/components/appContainer";
 import Pagination from "@/libs/pagination";
-import { useState } from "react";
-import useSWR from "swr";
-import { User } from "./types";
-import UserHeader from "./userHeader";
-import UserSidebar from "./userSidebar";
-import UserTable from "./userTable";
-
-const PAGE_SIZE = 1;
+import { PageSize } from "@/utils/constants";
+import { useRouter } from "next/router";
+import { userApi } from "./api";
+import UserHeader from "./components/userHeader";
+import UserSidebar from "./components/userSidebar";
+import UserTable from "./components/userTable";
+import { useUserList } from "./hooks";
+import { GetListUserParams, UpdateUserPayload, User } from "./types";
 
 type Props = {};
 
 const User = (props: Props) => {
-  const [page, setPage] = useState(1);
+  const router = useRouter();
+  const filter: Partial<GetListUserParams> = {
+    page: 1,
+    take: PageSize,
+    ...router.query,
+  };
 
-  const { data } = useSWR(`/user/list?take=${PAGE_SIZE}&page=${page}`);
-  const dataSource = data?.data || [];
-  const pageMeta = data?.meta || {};
+  const { data, mutate } = useUserList({ params: filter });
+  const dataSource = data.data;
+  const pagination = data.pagination;
 
-  function onChangePage(value) {
-    setPage(value);
+  function onChangePage(value: number) {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          page: value,
+        },
+      },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
+  }
+
+  function onChangeFilter({ search, status }: GetListUserParams) {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          page: 1,
+          search,
+          status,
+        },
+      },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
+  }
+
+  async function onUpdateStatus({ value, record }) {
+    const payload: UpdateUserPayload = {
+      status: value,
+      userId: record.id,
+    };
+    await userApi.updateStatusUser(payload);
+    mutate();
   }
 
   function onEdit(data: User) {
@@ -27,20 +71,23 @@ const User = (props: Props) => {
   }
   return (
     <AppContainer
-      sidebarContent={<UserSidebar />}
+      sidebarContent={
+        <UserSidebar initialValues={filter} onChangeFilter={onChangeFilter} />
+      }
       headerContent={<UserHeader />}
     >
       <UserTable
         dataSource={dataSource}
         onEdit={onEdit}
-        current={page}
-        pageSize={PAGE_SIZE}
+        current={filter.page}
+        pageSize={PageSize}
+        onUpdateStatus={onUpdateStatus}
       />
       <Pagination
         onChange={onChangePage}
-        current={page}
-        total={pageMeta.itemCount}
-        pageSize={PAGE_SIZE}
+        current={filter.page}
+        total={pagination.itemCount}
+        pageSize={PageSize}
         wrapperClassName="px-2"
       />
     </AppContainer>

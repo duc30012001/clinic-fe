@@ -1,27 +1,25 @@
-import Input, { InputChangeEvent } from "@/libs/input";
 import Label from "@/libs/label";
+import Select, { SelectChangeEvent, SelectProps } from "@/libs/select";
 import { FormDirection } from "@/utils/enum";
 import clsx from "clsx";
-import React, { HTMLInputTypeAttribute } from "react";
 import { Control, useController } from "react-hook-form";
 import ErrorMessage from "./errorMessage";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends SelectProps {
   name: string;
   label?: string;
   control: Control<any>;
   direction?: FormDirection;
-  type?: HTMLInputTypeAttribute;
   required?: boolean;
 }
 
-export function InputField({
+export function SelectField({
   name,
   label,
   control,
-  required,
-  onChange: externalOnChange,
   direction = FormDirection.VERTICAL,
+  onChange: externalOnChange,
+  required,
   ...props
 }: Props) {
   const {
@@ -42,10 +40,10 @@ export function InputField({
       )}
     >
       <Label htmlFor={name} label={label} required={required} />
-      <Input
+      <Select
         name={name}
         value={value}
-        onChange={(event: InputChangeEvent) => {
+        onChange={(event: SelectChangeEvent) => {
           onChange(event);
           externalOnChange?.(event);
         }}
