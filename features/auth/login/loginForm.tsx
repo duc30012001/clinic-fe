@@ -41,7 +41,7 @@ export default function LoginForm({ onSubmit }: Props) {
         label="Mật khẩu"
         required
       />
-      <Button className="mt-4 max-w-full" type="submit">
+      <Button primary className="mt-4 max-w-full" type="submit">
         Đăng nhập
       </Button>
     </form>

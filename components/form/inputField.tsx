@@ -9,7 +9,7 @@ import ErrorMessage from "./errorMessage";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
-  control: Control<any>;
+  control?: Control<any>;
   direction?: FormDirection;
   type?: HTMLInputTypeAttribute;
   required?: boolean;

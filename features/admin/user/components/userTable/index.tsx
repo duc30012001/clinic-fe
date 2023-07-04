@@ -63,7 +63,7 @@ const UserTable = ({
     },
     {
       accessorKey: "status",
-      header: "Status",
+      header: "Trạng thái",
       cell: (info) => {
         const record = info.row.original;
         const status = info.renderValue() as Status;
