@@ -1,7 +1,6 @@
 import { InputField } from "@/components/form";
 import { useTranslate, useYupValidationResolver } from "@/hooks";
 import { Button } from "@/libs/button";
-import { Status } from "@/utils/enum";
 import { TypeFunction } from "@/utils/types";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -39,7 +38,7 @@ export default function UserForm({ onSubmit, dataEdit }: Props) {
   async function handleLoginSubmit(values: CreateUserPayload) {
     const dataSubmit = {
       ...values,
-      status: Status.ACTIVE,
+      status: dataEdit?.status,
     };
     await onSubmit(dataSubmit);
   }
