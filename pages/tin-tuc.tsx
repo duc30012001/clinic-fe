@@ -1,4 +1,6 @@
-import News from "@/features/news";
+import dynamic from "next/dynamic";
+
+const News = dynamic(() => import("@/features/news"));
 
 type Props = {};
 

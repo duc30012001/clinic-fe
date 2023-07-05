@@ -1,4 +1,6 @@
-import AppointmentBooking from "@/features/appointment";
+import dynamic from "next/dynamic";
+
+const AppointmentBooking = dynamic(() => import("@/features/appointment"));
 
 type Props = {};
 

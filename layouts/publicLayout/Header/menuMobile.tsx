@@ -9,11 +9,11 @@ type Props = {
   menu: TypeMenu;
 };
 
-const DropdownItem = ({ item }) => {
+export const DropdownItem = ({ item }) => {
   return (
     <Link
       className={
-        "flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-slate-200"
+        "flex w-full items-center rounded-md px-2 py-2 hover:bg-slate-200"
       }
       href={item.pathname || "#"}
     >

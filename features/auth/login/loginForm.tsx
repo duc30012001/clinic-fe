@@ -33,14 +33,15 @@ export default function LoginForm({ onSubmit }: Props) {
 
   return (
     <form onSubmit={handleSubmit(handleLoginSubmit)} className="text-left">
-      <InputField name="email" control={control} label="Email" />
+      <InputField name="email" control={control} label="Email" required />
       <InputField
         name="password"
         type="password"
         control={control}
         label="Mật khẩu"
+        required
       />
-      <Button className="mt-4" type="submit">
+      <Button primary className="mt-4 max-w-full" type="submit">
         Đăng nhập
       </Button>
     </form>

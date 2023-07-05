@@ -46,7 +46,7 @@ export default function LoginButton({}: Props) {
           <Link
             href={item.pathname}
             onClick={item.onClick}
-            className="flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-slate-200"
+            className="flex w-full items-center rounded-md px-2 py-2 hover:bg-slate-200"
           >
             {item.label}
           </Link>

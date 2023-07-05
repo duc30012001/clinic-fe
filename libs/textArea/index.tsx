@@ -18,7 +18,7 @@ export default function TextArea({
       name={name}
       rows={rows}
       ref={htmlRef}
-      className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:ring-blue-500 focus-visible:border-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 ${className}`}
+      className={`mt-2 block w-full appearance-none rounded-md bg-white px-3 py-2.5 text-slate-900 shadow-sm ring-1 ring-slate-200 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
       {...props}
     />
   );

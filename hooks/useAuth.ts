@@ -1,16 +1,11 @@
 import axiosClient, { authApi } from "@/apiClient";
 import { showNotification } from "@/helpers";
-import { LoginPayload } from "@/utils/types";
+import { ErrorResponse, LoginPayload } from "@/utils/types";
 import { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { PublicConfiguration } from "swr/_internal";
 import { useTranslate } from "./useTranslate";
-
-interface ErrorResponse {
-  message: string;
-  // Add any other properties you expect in the error response
-}
 
 export function useAuth(option?: Partial<PublicConfiguration>) {
   const { messages } = useTranslate();
@@ -20,14 +15,12 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
     data: profile,
     error,
     mutate,
+    isLoading,
   } = useSWR("/user/profile", {
     dedupingInterval: 60 * 60 * 1000,
     revalidateOnFocus: false,
     ...option,
   });
-
-  const isAuthenticated = profile?.id;
-  const isLoading = profile === undefined && error === undefined;
 
   async function login(payload: LoginPayload) {
     try {
@@ -54,7 +47,7 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
     error,
     login,
     logout,
-    isAuthenticated,
+    isAuthenticated: Boolean(profile?.id),
     isLoading,
   };
 }

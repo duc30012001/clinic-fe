@@ -66,7 +66,7 @@ export default function BookingForm({}: Props) {
           label="Ngày khám"
           required
         />
-        <Button type="submit" className="mt-4">
+        <Button primary type="submit" className="mt-4">
           Đặt lịch khám
         </Button>
       </form>
