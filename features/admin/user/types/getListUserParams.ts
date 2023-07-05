@@ -5,7 +5,7 @@ export interface GetListUserParams extends CommonParams {
   status: Status;
 }
 
-export interface UpdateUserPayload {
+export interface UpdateStatusUserPayload {
   userId: string;
   status: Status;
 }

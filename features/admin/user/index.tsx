@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { userApi } from "./api";
 import UserHeader from "./components/userHeader";
-import { CreateUserModal } from "./components/userModal";
+import { CreateUserModal, UpdateUserModal } from "./components/userModal";
 import UserSidebar from "./components/userSidebar";
 import UserTable from "./components/userTable";
 import { UserModal } from "./enums";
 import { useUserList } from "./hooks";
-import { GetListUserParams, UpdateUserPayload, User } from "./types";
+import { GetListUserParams, UpdateStatusUserPayload, User } from "./types";
 
 type Props = {};
 
@@ -18,7 +18,7 @@ export type TypeOpenModal = (typeModal: UserModal, dataEdit?: User) => void;
 
 const UserFeature = (props: Props) => {
   const [typeModal, setTypeModal] = useState<UserModal | null>(null);
-  const [dataEdit, setDataEdit] = useState({});
+  const [dataEdit, setDataEdit] = useState<User | undefined>(undefined);
 
   const router = useRouter();
   const filter: Partial<GetListUserParams> = {
@@ -65,18 +65,22 @@ const UserFeature = (props: Props) => {
     );
   }
 
-  function closeModal() {
-    setTypeModal(null);
-    setDataEdit({});
+  function getListData() {
+    mutate();
   }
 
-  function openModal(typeModal: UserModal, newDataEdit = {}) {
+  function closeModal() {
+    setTypeModal(null);
+    setDataEdit(undefined);
+  }
+
+  function openModal(typeModal: UserModal, newDataEdit?: User) {
     setTypeModal(typeModal);
     setDataEdit(newDataEdit);
   }
 
   async function onUpdateStatus({ value, record }) {
-    const payload: UpdateUserPayload = {
+    const payload: UpdateStatusUserPayload = {
       status: value,
       userId: record.id,
     };
@@ -84,9 +88,6 @@ const UserFeature = (props: Props) => {
     mutate();
   }
 
-  function onEdit(data: User) {
-    console.log("data:", data);
-  }
   return (
     <AppContainer
       sidebarContent={
@@ -96,7 +97,7 @@ const UserFeature = (props: Props) => {
     >
       <UserTable
         dataSource={dataSource}
-        onEdit={onEdit}
+        onEdit={openModal}
         current={filter.page}
         pageSize={PageSize}
         onUpdateStatus={onUpdateStatus}
@@ -111,6 +112,13 @@ const UserFeature = (props: Props) => {
       <CreateUserModal
         isOpen={typeModal === UserModal.CREATE_USER}
         closeModal={closeModal}
+        getListData={getListData}
+      />
+      <UpdateUserModal
+        isOpen={typeModal === UserModal.UPDATE_USER}
+        closeModal={closeModal}
+        getListData={getListData}
+        dataEdit={dataEdit}
       />
     </AppContainer>
   );

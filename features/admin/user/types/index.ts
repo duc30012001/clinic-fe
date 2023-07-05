@@ -1,4 +1,6 @@
+export * from "./createUserPayload";
 export * from "./getListUserParams";
+export * from "./updateUserPayload";
 
 export interface User {
   id: string;

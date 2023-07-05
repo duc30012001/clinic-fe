@@ -55,7 +55,7 @@ const StatusButton = ({ value, ...props }: Props) => {
               <Listbox.Option
                 key={item.value}
                 className={({ active, selected }) =>
-                  `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                  `relative cursor-default select-none py-2 pl-2 pr-4 ${
                     active ? "bg-blue-50 text-gray-900" : "text-gray-900"
                   } ${selected ? "bg-slate-200" : "bg-slate-50"}`
                 }

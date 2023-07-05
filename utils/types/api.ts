@@ -15,3 +15,7 @@ export interface ListResponse<T> {
 export interface ErrorResponse {
   message: string;
 }
+
+export interface SuccessResponse {
+  message: string;
+}
