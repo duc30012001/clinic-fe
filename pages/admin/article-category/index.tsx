@@ -2,12 +2,14 @@ import { AdminLayout } from "@/layouts";
 import { NextPageWithLayout } from "@/utils/types";
 import dynamic from "next/dynamic";
 
-const UserFeature = dynamic(() => import("@/features/admin/user"));
+const ArticleCategoryFeature = dynamic(
+  () => import("@/features/admin/articleCategory")
+);
 
 type Props = {};
 
 const UserPage: NextPageWithLayout = (props: Props) => {
-  return <UserFeature />;
+  return <ArticleCategoryFeature />;
 };
 
 UserPage.Layout = AdminLayout;

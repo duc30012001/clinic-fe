@@ -4,13 +4,13 @@ import { Status } from "@/utils/enum";
 import { TypeFunction } from "@/utils/types";
 import _ from "lodash";
 import { useForm } from "react-hook-form";
-import { GetListUserParams } from "../../types";
+import { GetListArticleCategoryParams } from "../../types";
 
 type Props = {
   onChangeFilter: TypeFunction;
-  initialValues: Partial<GetListUserParams>;
+  initialValues: Partial<GetListArticleCategoryParams>;
 };
-const UserSidebar = ({ onChangeFilter, initialValues }: Props) => {
+const ArticleCategorySidebar = ({ onChangeFilter, initialValues }: Props) => {
   const { messages } = useTranslate();
 
   const options = [
@@ -20,13 +20,13 @@ const UserSidebar = ({ onChangeFilter, initialValues }: Props) => {
     { value: Status.HIDDEN, label: messages("status.hidden") },
   ];
 
-  const { handleSubmit, control } = useForm<GetListUserParams>({
+  const { handleSubmit, control } = useForm<GetListArticleCategoryParams>({
     defaultValues: {
       ...initialValues,
     },
   });
 
-  async function handleLoginSubmit(values: GetListUserParams) {
+  async function handleLoginSubmit(values: GetListArticleCategoryParams) {
     await onChangeFilter(values);
   }
 
@@ -42,7 +42,7 @@ const UserSidebar = ({ onChangeFilter, initialValues }: Props) => {
         <InputField
           name="search"
           control={control}
-          label={messages("common.email")}
+          label={messages("articleCategory.name")}
           placeholder={messages("form.searchPlaceholder")}
           onChange={() => debounceSearchChange()}
         />
@@ -58,4 +58,4 @@ const UserSidebar = ({ onChangeFilter, initialValues }: Props) => {
   );
 };
 
-export default UserSidebar;
+export default ArticleCategorySidebar;

@@ -4,25 +4,31 @@ import { PageSize } from "@/utils/constants";
 import { Status } from "@/utils/enum";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { userApi } from "./api";
-import UserHeader from "./components/userHeader";
-import { CreateUserModal, UpdateUserModal } from "./components/userModal";
-import UserSidebar from "./components/userSidebar";
-import UserTable from "./components/userTable";
-import { UserModal } from "./enums";
-import { useUserList } from "./hooks";
-import { GetListUserParams, UpdateStatusUserPayload, User } from "./types";
+import { articleApi } from "./api";
+import ArticleHeader from "./components/header";
+import ArticleSidebar from "./components/sidebar";
+import ArticleTable from "./components/table";
+import { ArticleModal } from "./enums";
+import { useArticleList } from "./hooks";
+import {
+  Article,
+  GetListArticleParams,
+  UpdateStatusArticlePayload,
+} from "./types";
 
 type Props = {};
 
-export type TypeOpenModal = (typeModal: UserModal, dataEdit?: User) => void;
+export type TypeOpenModal = (
+  typeModal: ArticleModal,
+  dataEdit?: Article
+) => void;
 
-const UserFeature = (props: Props) => {
-  const [typeModal, setTypeModal] = useState<UserModal | null>(null);
-  const [dataEdit, setDataEdit] = useState<User | undefined>(undefined);
+const ArticleFeature = (props: Props) => {
+  const [typeModal, setTypeModal] = useState<ArticleModal | null>(null);
+  const [dataEdit, setDataEdit] = useState<Article | undefined>(undefined);
 
   const router = useRouter();
-  const filter: Partial<GetListUserParams> = {
+  const filter: Partial<GetListArticleParams> = {
     page: 1,
     take: PageSize,
     ...router.query,
@@ -36,7 +42,7 @@ const UserFeature = (props: Props) => {
     }
   }
 
-  const { data, mutate } = useUserList({ params: dataFilter });
+  const { data, mutate } = useArticleList({ params: dataFilter });
   const dataSource = data.data;
   const pagination = data.pagination;
 
@@ -56,7 +62,7 @@ const UserFeature = (props: Props) => {
     );
   }
 
-  function onChangeFilter({ search, status }: GetListUserParams) {
+  function onChangeFilter({ search, status }: GetListArticleParams) {
     router.push(
       {
         pathname: router.pathname,
@@ -83,28 +89,31 @@ const UserFeature = (props: Props) => {
     setDataEdit(undefined);
   }
 
-  function openModal(typeModal: UserModal, newDataEdit?: User) {
+  function openModal(typeModal: ArticleModal, newDataEdit?: Article) {
     setTypeModal(typeModal);
     setDataEdit(newDataEdit);
   }
 
   async function onUpdateStatus({ value, record }) {
-    const payload: UpdateStatusUserPayload = {
+    const payload: UpdateStatusArticlePayload = {
       status: value,
-      userId: record.id,
+      articleId: record.id,
     };
-    await userApi.updateStatusUser(payload);
+    await articleApi.updateStatusArticle(payload);
     mutate();
   }
 
   return (
     <AppContainer
       sidebarContent={
-        <UserSidebar initialValues={filter} onChangeFilter={onChangeFilter} />
+        <ArticleSidebar
+          initialValues={filter}
+          onChangeFilter={onChangeFilter}
+        />
       }
-      headerContent={<UserHeader openModal={openModal} />}
+      headerContent={<ArticleHeader openModal={openModal} />}
     >
-      <UserTable
+      <ArticleTable
         dataSource={dataSource}
         onEdit={openModal}
         current={filter.page}
@@ -118,19 +127,19 @@ const UserFeature = (props: Props) => {
         pageSize={PageSize}
         wrapperClassName="px-2"
       />
-      <CreateUserModal
-        isOpen={typeModal === UserModal.CREATE_USER}
+      {/* <CreateArticleModal
+        isOpen={typeModal === ArticleModal.CREATE}
         closeModal={closeModal}
         getListData={getListData}
       />
-      <UpdateUserModal
-        isOpen={typeModal === UserModal.UPDATE_USER}
+      <UpdateArticleModal
+        isOpen={typeModal === ArticleModal.UPDATE}
         closeModal={closeModal}
         getListData={getListData}
         dataEdit={dataEdit}
-      />
+      /> */}
     </AppContainer>
   );
 };
 
-export default UserFeature;
+export default ArticleFeature;

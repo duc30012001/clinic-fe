@@ -8,7 +8,7 @@ type Props = {
 };
 
 const NavbarDesktop = ({ routes }: Props) => {
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
   return (
     <nav>
       <ul className="hidden gap-1 lg:flex">
@@ -17,7 +17,7 @@ const NavbarDesktop = ({ routes }: Props) => {
             <Link
               href={item.pathname}
               className={clsx(
-                { "bg-cyan-600": asPath === item.pathname },
+                { "bg-cyan-600": pathname === item.pathname },
                 "inline-block rounded-lg px-5 py-2 hover:bg-cyan-600"
               )}
             >

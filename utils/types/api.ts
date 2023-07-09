@@ -19,3 +19,9 @@ export interface ErrorResponse {
 export interface SuccessResponse {
   message: string;
 }
+
+export interface CommonAttribute {
+  id: string;
+  date_created?: Date;
+  date_modified?: Date;
+}

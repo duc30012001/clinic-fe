@@ -38,7 +38,13 @@
     "accessDenied": "Bạn không có quyền xem nội dung này",
     "cancel": "Huỷ",
     "upload": "Tải lên",
-    "other": "Khác"
+    "other": "Khác",
+    "slug": "Slug",
+    "description": "Mô tả",
+    "content": "Nội dung",
+    "dateCreated": "Ngày tạo",
+    "dateModified": "Ngày cập nhật",
+    "action": "Thao tác"
   },
   "userProfile": {
     "myProfile": "Tài khoản cá nhân",
@@ -54,7 +60,9 @@
     "active": "Kích hoạt",
     "hidden": "Tạm ẩn",
     "pending": "Chờ duyệt",
-    "label": "Trạng thái"
+    "label": "Trạng thái",
+    "placeholder": "Chọn trạng thái",
+    "all": "Tất cả"
   },
   "form": {
     "searchPlaceholder": "Tìm kiếm..."
@@ -91,5 +99,12 @@
     "songs": "Bài hát",
     "home": "Trang chủ",
     "dashboard": "Tổng quan"
+  },
+  "articleCategory": {
+    "name": "Tên danh mục",
+    "label": "Danh mục"
+  },
+  "article": {
+    "name": "Tên bài viết"
   }
 }

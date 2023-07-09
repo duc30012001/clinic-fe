@@ -4,25 +4,38 @@ import { PageSize } from "@/utils/constants";
 import { Status } from "@/utils/enum";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { userApi } from "./api";
-import UserHeader from "./components/userHeader";
-import { CreateUserModal, UpdateUserModal } from "./components/userModal";
-import UserSidebar from "./components/userSidebar";
-import UserTable from "./components/userTable";
-import { UserModal } from "./enums";
-import { useUserList } from "./hooks";
-import { GetListUserParams, UpdateStatusUserPayload, User } from "./types";
+import { articleCategoryApi } from "./api";
+import ArticleCategoryHeader from "./components/header";
+// import { CreateArticleCategoryModal, UpdateArticleCategoryModal } from "./components/modal";
+import {
+  CreateArticleCategoryModal,
+  UpdateArticleCategoryModal,
+} from "./components/modal";
+import ArticleCategorySidebar from "./components/sidebar";
+import ArticleCategoryTable from "./components/table";
+import { ArticleCategoryModal } from "./enums";
+import { useArticleCategoryList } from "./hooks";
+import {
+  ArticleCategory,
+  GetListArticleCategoryParams,
+  UpdateStatusArticleCategoryPayload,
+} from "./types";
 
 type Props = {};
 
-export type TypeOpenModal = (typeModal: UserModal, dataEdit?: User) => void;
+export type TypeOpenModal = (
+  typeModal: ArticleCategoryModal,
+  dataEdit?: ArticleCategory
+) => void;
 
-const UserFeature = (props: Props) => {
-  const [typeModal, setTypeModal] = useState<UserModal | null>(null);
-  const [dataEdit, setDataEdit] = useState<User | undefined>(undefined);
+const ArticleCategoryFeature = (props: Props) => {
+  const [typeModal, setTypeModal] = useState<ArticleCategoryModal | null>(null);
+  const [dataEdit, setDataEdit] = useState<ArticleCategory | undefined>(
+    undefined
+  );
 
   const router = useRouter();
-  const filter: Partial<GetListUserParams> = {
+  const filter: Partial<GetListArticleCategoryParams> = {
     page: 1,
     take: PageSize,
     ...router.query,
@@ -36,7 +49,7 @@ const UserFeature = (props: Props) => {
     }
   }
 
-  const { data, mutate } = useUserList({ params: dataFilter });
+  const { data, mutate } = useArticleCategoryList({ params: dataFilter });
   const dataSource = data.data;
   const pagination = data.pagination;
 
@@ -56,7 +69,7 @@ const UserFeature = (props: Props) => {
     );
   }
 
-  function onChangeFilter({ search, status }: GetListUserParams) {
+  function onChangeFilter({ search, status }: GetListArticleCategoryParams) {
     router.push(
       {
         pathname: router.pathname,
@@ -83,28 +96,34 @@ const UserFeature = (props: Props) => {
     setDataEdit(undefined);
   }
 
-  function openModal(typeModal: UserModal, newDataEdit?: User) {
+  function openModal(
+    typeModal: ArticleCategoryModal,
+    newDataEdit?: ArticleCategory
+  ) {
     setTypeModal(typeModal);
     setDataEdit(newDataEdit);
   }
 
   async function onUpdateStatus({ value, record }) {
-    const payload: UpdateStatusUserPayload = {
+    const payload: UpdateStatusArticleCategoryPayload = {
       status: value,
-      userId: record.id,
+      articleCategoryId: record.id,
     };
-    await userApi.updateStatusUser(payload);
+    await articleCategoryApi.updateStatusArticleCategory(payload);
     mutate();
   }
 
   return (
     <AppContainer
       sidebarContent={
-        <UserSidebar initialValues={filter} onChangeFilter={onChangeFilter} />
+        <ArticleCategorySidebar
+          initialValues={filter}
+          onChangeFilter={onChangeFilter}
+        />
       }
-      headerContent={<UserHeader openModal={openModal} />}
+      headerContent={<ArticleCategoryHeader openModal={openModal} />}
     >
-      <UserTable
+      <ArticleCategoryTable
         dataSource={dataSource}
         onEdit={openModal}
         current={filter.page}
@@ -118,13 +137,13 @@ const UserFeature = (props: Props) => {
         pageSize={PageSize}
         wrapperClassName="px-2"
       />
-      <CreateUserModal
-        isOpen={typeModal === UserModal.CREATE_USER}
+      <CreateArticleCategoryModal
+        isOpen={typeModal === ArticleCategoryModal.CREATE}
         closeModal={closeModal}
         getListData={getListData}
       />
-      <UpdateUserModal
-        isOpen={typeModal === UserModal.UPDATE_USER}
+      <UpdateArticleCategoryModal
+        isOpen={typeModal === ArticleCategoryModal.UPDATE}
         closeModal={closeModal}
         getListData={getListData}
         dataEdit={dataEdit}
@@ -133,4 +152,4 @@ const UserFeature = (props: Props) => {
   );
 };
 
-export default UserFeature;
+export default ArticleCategoryFeature;
