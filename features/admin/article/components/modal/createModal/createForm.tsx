@@ -1,17 +1,17 @@
-import { InputField } from "@/components/form";
+import { InputField, TextAreaField } from "@/components/form";
 import { useTranslate, useYupValidationResolver } from "@/hooks";
 import { Button } from "@/libs/button";
 import { Status } from "@/utils/enum";
 import { TypeFunction } from "@/utils/types";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { CreateArticleCategoryPayload } from "../../../types";
+import { CreateArticlePayload } from "../../../types";
 
 type Props = {
   onSubmit: TypeFunction;
 };
 
-export default function ArticleCategoryForm({ onSubmit }: Props) {
+export default function ArticleForm({ onSubmit }: Props) {
   const { messages } = useTranslate();
 
   const validationSchema = yup.object({
@@ -26,9 +26,9 @@ export default function ArticleCategoryForm({ onSubmit }: Props) {
     handleSubmit,
     control,
     formState: { isSubmitting },
-  } = useForm<CreateArticleCategoryPayload>({ resolver });
+  } = useForm<CreateArticlePayload>({ resolver });
 
-  async function handleLoginSubmit(values: CreateArticleCategoryPayload) {
+  async function handleLoginSubmit(values: CreateArticlePayload) {
     const dataSubmit = {
       ...values,
       status: Status.ACTIVE,
@@ -41,10 +41,10 @@ export default function ArticleCategoryForm({ onSubmit }: Props) {
       <InputField
         name="article_category_name"
         control={control}
-        label={messages("articleCategory.name")}
+        label={messages("article.name")}
         required
       />
-      <InputField
+      <TextAreaField
         name="description"
         control={control}
         label={messages("common.description")}

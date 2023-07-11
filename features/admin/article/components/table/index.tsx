@@ -44,7 +44,7 @@ const ArticleTable = ({
       accessorKey: "article_category",
       header: messages("articleCategory.label"),
       cell: ({ row }) => {
-        const data = row.original.article_category.article_category_name;
+        const data = row.original.article_category?.article_category_name || "";
         return data;
       },
     },

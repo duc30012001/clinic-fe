@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { articleApi } from "./api";
 import ArticleHeader from "./components/header";
+import { CreateArticleModal } from "./components/modal";
 import ArticleSidebar from "./components/sidebar";
 import ArticleTable from "./components/table";
 import { ArticleModal } from "./enums";
@@ -127,11 +128,12 @@ const ArticleFeature = (props: Props) => {
         pageSize={PageSize}
         wrapperClassName="px-2"
       />
-      {/* <CreateArticleModal
+      <CreateArticleModal
         isOpen={typeModal === ArticleModal.CREATE}
         closeModal={closeModal}
         getListData={getListData}
       />
+      {/* 
       <UpdateArticleModal
         isOpen={typeModal === ArticleModal.UPDATE}
         closeModal={closeModal}
