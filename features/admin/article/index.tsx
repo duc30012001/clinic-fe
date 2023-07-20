@@ -19,6 +19,9 @@ import {
 
 type Props = {};
 
+const columns =
+  "id,article_title,date_created,date_modified,status,article_category_id";
+
 export type TypeOpenModal = (
   typeModal: ArticleModal,
   dataEdit?: Article
@@ -34,7 +37,9 @@ const ArticleFeature = (props: Props) => {
     take: PageSize,
     ...router.query,
   };
-  const dataFilter = {};
+  const dataFilter = {
+    columns,
+  };
   for (const key in filter) {
     if (filter[key] === Status.ALL) {
       dataFilter[key] = undefined;

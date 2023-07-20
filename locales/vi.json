@@ -105,6 +105,7 @@
     "label": "Danh mục"
   },
   "article": {
-    "name": "Tên bài viết"
+    "name": "Tên bài viết",
+    "thumbnail": "Thumbnail"
   }
 }
