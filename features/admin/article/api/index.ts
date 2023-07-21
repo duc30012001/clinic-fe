@@ -69,4 +69,19 @@ export const articleApi = {
       return false;
     }
   },
+
+  async getArticleById(articleId: string) {
+    try {
+      const response: Article = await axiosClient.get(
+        `/article/list/${articleId}`
+      );
+      return response;
+    } catch (error) {
+      console.log("error:", error);
+      const err = error as AxiosError<ErrorResponse>;
+      const message = err.response?.data.message || ""; //|| messages("message.somethingWentWrong");
+      showNotification("error", message);
+      return null;
+    }
+  },
 };

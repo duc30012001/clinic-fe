@@ -56,7 +56,7 @@ const TextEditor = ({ height, onChange, value, name, htmlRef }: Props) => {
           className="wrap-ckeditor mt-3"
           editor={Editor}
           config={config}
-          initData={value}
+          data={value}
           onChange={handleChange}
           id={name}
           ref={htmlRef}

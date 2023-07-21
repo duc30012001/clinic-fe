@@ -11,6 +11,8 @@ import { Button } from "@/libs/button";
 import { SelectOptions } from "@/libs/select";
 import { Status } from "@/utils/enum";
 import { TypeFunction } from "@/utils/types";
+import Image from "next/image";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { CreateArticlePayload } from "../../../types";
@@ -20,6 +22,7 @@ type Props = {
 };
 
 export default function ArticleForm({ onSubmit }: Props) {
+  const [thumbnail, setThumbnail] = useState<string>("");
   const { messages } = useTranslate();
   const dataFilter = {
     status: Status.ACTIVE,
@@ -58,7 +61,10 @@ export default function ArticleForm({ onSubmit }: Props) {
   }
 
   function onChangeFile(event) {
-    setValue("thumbnail", event.target.files?.[0]);
+    const file = event.target.files?.[0];
+    const url = file ? URL.createObjectURL(file) : "";
+    setValue("thumbnail", file);
+    setThumbnail(url);
   }
 
   return (
@@ -96,6 +102,10 @@ export default function ArticleForm({ onSubmit }: Props) {
             accept="image/*"
             onChange={onChangeFile}
           />
+          {(thumbnail && (
+            <Image src={thumbnail} alt="" width={500} height={300} />
+          )) ||
+            null}
           <Button primary className="mt-4 max-w-full" type="submit">
             {messages("common.submit")}
           </Button>

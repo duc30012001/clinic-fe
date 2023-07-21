@@ -4,26 +4,38 @@ import { useTranslate } from "@/hooks";
 import Modal from "@/libs/modal";
 import dayjs from "dayjs";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { MutableRefObject } from "react";
 import { articleApi } from "../../../api";
-import { UpdateArticlePayload } from "../../../types";
+import { Article, UpdateArticlePayload } from "../../../types";
 import ArticleForm from "./updateForm";
 
 interface UpdateArticleModalProps {
   closeModal: () => void;
   isOpen: boolean;
   getListData: () => void;
+  dataEdit?: Article;
 }
 
 export const UpdateArticleModal = ({
   closeModal,
   isOpen,
   getListData,
+  dataEdit,
 }: UpdateArticleModalProps) => {
   const { messages } = useTranslate();
 
-  async function onSubmit(values: UpdateArticlePayload) {
+  async function onSubmit(
+    values: UpdateArticlePayload,
+    thumbnail: string,
+    dataDetailRef: MutableRefObject<Article | null>
+  ) {
+    console.log("thumbnail:", thumbnail);
     const dataSubmit = structuredClone(values);
-    if (dataSubmit.thumbnail) {
+    console.log("dataSubmit:", dataSubmit);
+    if (
+      dataSubmit.thumbnail &&
+      dataDetailRef.current?.thumbnail_url !== thumbnail
+    ) {
       console.log("dataSubmit.thumbnail:", dataSubmit.thumbnail);
       const thumbnail: File = (await resizeImageFile({
         file: dataSubmit.thumbnail,
@@ -56,19 +68,22 @@ export const UpdateArticleModal = ({
             //url is download url of file
             dataSubmit.thumbnail_url = url;
             delete dataSubmit.thumbnail;
-            createArticle(dataSubmit);
+            updateArticle(dataSubmit);
           });
         }
       );
     } else {
-      dataSubmit.thumbnail_url = undefined;
+      dataSubmit.thumbnail_url = thumbnail || undefined;
       delete dataSubmit.thumbnail;
-      createArticle(dataSubmit);
+      updateArticle(dataSubmit);
     }
   }
 
-  async function createArticle(dataSubmit: UpdateArticlePayload) {
-    const isSuccess = await articleApi.createArticle(dataSubmit);
+  async function updateArticle(dataSubmit: UpdateArticlePayload) {
+    const isSuccess = await articleApi.updateArticle(
+      dataEdit?.id || "",
+      dataSubmit
+    );
     if (isSuccess) {
       closeModal();
       getListData();
@@ -77,13 +92,13 @@ export const UpdateArticleModal = ({
 
   return (
     <Modal
-      title={messages("common.create")}
+      title={messages("common.edit")}
       isOpen={isOpen}
       closeModal={closeModal}
       footer={null}
       className="max-w-7xl"
     >
-      <ArticleForm onSubmit={onSubmit} />
+      <ArticleForm onSubmit={onSubmit} dataEdit={dataEdit} />
     </Modal>
   );
 };

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { articleApi } from "./api";
 import ArticleHeader from "./components/header";
-import { CreateArticleModal } from "./components/modal";
+import { CreateArticleModal, UpdateArticleModal } from "./components/modal";
 import ArticleSidebar from "./components/sidebar";
 import ArticleTable from "./components/table";
 import { ArticleModal } from "./enums";
@@ -138,13 +138,13 @@ const ArticleFeature = (props: Props) => {
         closeModal={closeModal}
         getListData={getListData}
       />
-      {/* 
+
       <UpdateArticleModal
         isOpen={typeModal === ArticleModal.UPDATE}
         closeModal={closeModal}
         getListData={getListData}
         dataEdit={dataEdit}
-      /> */}
+      />
     </AppContainer>
   );
 };

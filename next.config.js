@@ -14,7 +14,7 @@ const nextConfig = {
     WEBSITE: "http://www.tranvanchuong.com",
   },
   images: {
-    domains: ["icdn.dantri.com.vn"],
+    domains: ["icdn.dantri.com.vn", "firebasestorage.googleapis.com"],
     minimumCacheTTL: 1500000,
   },
   i18n,

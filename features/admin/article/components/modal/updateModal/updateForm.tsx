@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   CkEditorField,
   InputField,
@@ -10,16 +11,29 @@ import { useTranslate, useYupValidationResolver } from "@/hooks";
 import { Button } from "@/libs/button";
 import { SelectOptions } from "@/libs/select";
 import { Status } from "@/utils/enum";
-import { TypeFunction } from "@/utils/types";
+import Image from "next/image";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { CreateArticlePayload } from "../../../types";
+import { articleApi } from "../../../api";
+import {
+  Article,
+  CreateArticlePayload,
+  UpdateArticlePayload,
+} from "../../../types";
 
 type Props = {
-  onSubmit: TypeFunction;
+  onSubmit: (
+    values: UpdateArticlePayload,
+    thumbnail: string,
+    dataDetailRef: MutableRefObject<Article | null>
+  ) => void;
+  dataEdit?: Article;
 };
 
-export default function ArticleForm({ onSubmit }: Props) {
+export default function ArticleForm({ onSubmit, dataEdit }: Props) {
+  const [thumbnail, setThumbnail] = useState<string>("");
+  const dataDetailRef = useRef<Article | null>(null);
   const { messages } = useTranslate();
   const dataFilter = {
     status: Status.ACTIVE,
@@ -54,12 +68,32 @@ export default function ArticleForm({ onSubmit }: Props) {
       ...values,
       status: Status.ACTIVE,
     };
-    await onSubmit(dataSubmit);
+    await onSubmit(dataSubmit, thumbnail, dataDetailRef);
   }
 
   function onChangeFile(event) {
-    setValue("thumbnail", event.target.files?.[0]);
+    const file = event.target.files?.[0];
+    const url = file ? URL.createObjectURL(file) : "";
+    setValue("thumbnail", file);
+    setThumbnail(url);
   }
+
+  async function setInitialValuesForm() {
+    const dataArticleDetail = await articleApi.getArticleById(
+      dataEdit?.id || ""
+    );
+    dataDetailRef.current = dataArticleDetail;
+    setThumbnail(dataArticleDetail?.thumbnail_url || "");
+    for (const key in dataArticleDetail) {
+      if (key !== "thumbnail_url") {
+        setValue(key as keyof CreateArticlePayload, dataArticleDetail[key]);
+      }
+    }
+  }
+
+  useEffect(() => {
+    setInitialValuesForm();
+  }, [dataEdit?.id]);
 
   return (
     <form
@@ -96,6 +130,10 @@ export default function ArticleForm({ onSubmit }: Props) {
             accept="image/*"
             onChange={onChangeFile}
           />
+          {(thumbnail && (
+            <Image src={thumbnail} alt="" width={500} height={300} />
+          )) ||
+            null}
           <Button primary className="mt-4 max-w-full" type="submit">
             {messages("common.submit")}
           </Button>
