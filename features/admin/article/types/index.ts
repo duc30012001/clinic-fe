@@ -11,6 +11,7 @@ export interface Article extends CommonAttribute {
   status: number;
   thumbnail_url: string;
   article_category_id: string;
+  content: string;
   article_category: {
     id: string;
     article_category_name: string;

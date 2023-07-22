@@ -257,7 +257,7 @@
     "@ckeditor/ckeditor5-ui" "38.1.1"
     "@ckeditor/ckeditor5-utils" "38.1.1"
 
-"@ckeditor/ckeditor5-paste-from-office@38.1.1":
+"@ckeditor/ckeditor5-paste-from-office@38.1.1", "@ckeditor/ckeditor5-paste-from-office@^38.1.1":
   version "38.1.1"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-paste-from-office/-/ckeditor5-paste-from-office-38.1.1.tgz#a24f2cd0b1e8a8770ecf74b94db1858a9af0b0ea"
   integrity sha512-xCAw3HwxfFgsZPINf6jb29MObDN2wDzZFpiMkChdjzmHqaCugd2SAssZQo/flxdy5fkMXju8gCa0bfM2g1HTkQ==

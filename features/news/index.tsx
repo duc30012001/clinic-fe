@@ -3,13 +3,13 @@ import { PageSize } from "@/utils/constants";
 import { Status } from "@/utils/enum";
 import { useRouter } from "next/router";
 import { GetListArticleParams } from "../admin/article/types";
-import { NewsList } from "./components";
+import { ArticleCategorySelect, NewsList } from "./components";
 import { useArticleList } from "./hooks";
 
 type Props = {};
 
 const columns =
-  "id,article_title,date_modified,article_category_id,thumbnail_url,description";
+  "id,article_title,date_modified,article_category_id,thumbnail_url,description,slug";
 
 export default function News({}: Props) {
   const router = useRouter();
@@ -34,6 +34,7 @@ export default function News({}: Props) {
   return (
     <div>
       <BreadCrumbs title="Tin tức" />
+      <ArticleCategorySelect />
       <div className="grid grid-cols-4">
         <div className="col-span-4 md:col-span-3">
           <NewsList dataSource={dataSource} />
