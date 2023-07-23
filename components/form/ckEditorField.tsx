@@ -1,9 +1,14 @@
-import TextEditor from "@/libs/ckEditor";
+// import TextEditor from "@/libs/ckEditor";
 import Label from "@/libs/label";
 import { FormDirection } from "@/utils/enum";
 import clsx from "clsx";
+import dynamic from "next/dynamic";
 import { Control, useController } from "react-hook-form";
 import ErrorMessage from "./errorMessage";
+
+const TextEditor = dynamic(() => import("@/libs/ckEditor"), {
+  ssr: false,
+});
 
 type Props = {
   name: string;

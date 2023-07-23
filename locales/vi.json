@@ -93,7 +93,7 @@
     "deleteSuccessfully": "Xoá thành công!"
   },
   "sidebar": {
-    "categories": "Danh mục",
+    "categories": "Chuyên mục",
     "management": "Quản trị hệ thống",
     "contents": "Nội dung",
     "songs": "Bài hát",
@@ -101,11 +101,12 @@
     "dashboard": "Tổng quan"
   },
   "articleCategory": {
-    "name": "Tên danh mục",
-    "label": "Danh mục"
+    "name": "Tên chuyên mục",
+    "label": "Chuyên mục"
   },
   "article": {
     "name": "Tên bài viết",
-    "thumbnail": "Thumbnail"
+    "thumbnail": "Thumbnail",
+    "related": "Cùng chuyên mục"
   }
 }

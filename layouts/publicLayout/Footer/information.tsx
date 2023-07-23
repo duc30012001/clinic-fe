@@ -19,7 +19,11 @@ const dataFooter = [
   {
     id: 4,
     label: "Website:",
-    content: process.env.WEBSITE,
+    content: (
+      <a href={process.env.WEBSITE} target="blank">
+        {process.env.WEBSITE}
+      </a>
+    ),
   },
 ];
 

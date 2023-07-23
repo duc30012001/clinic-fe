@@ -7,7 +7,7 @@ type Props = {
   item: Article;
 };
 
-const NewsItem = ({ item }: Props) => {
+const RelatedNewsItem = ({ item }: Props) => {
   console.log("item:", item);
   const thumbnail_url = item.thumbnail_url || require("@/assets/thumbnail.jpg");
   const date = dayjs(item.date_modified || item.date_created).format(
@@ -18,7 +18,7 @@ const NewsItem = ({ item }: Props) => {
       <Image
         alt={item.article_title}
         src={thumbnail_url}
-        className="w-40 flex-none rounded-md md:w-80"
+        className="w-40 flex-none rounded-md md:w-60"
         width={160}
         height={100}
       />
@@ -40,4 +40,4 @@ const NewsItem = ({ item }: Props) => {
   );
 };
 
-export default NewsItem;
+export default RelatedNewsItem;

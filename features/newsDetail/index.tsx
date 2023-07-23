@@ -1,4 +1,9 @@
-import { Breadcrumb, NewsContent, NewsTitle } from "./components";
+import {
+  Breadcrumb,
+  NewsContent,
+  NewsTitle,
+  RelatedNewsList,
+} from "./components";
 import { useArticleDetail } from "./hooks";
 
 type Props = {
@@ -8,10 +13,13 @@ type Props = {
 function NewsDetail({ slug }: Props) {
   const { data: newsDetail } = useArticleDetail({ slug });
   return (
-    <div>
-      <Breadcrumb newsDetail={newsDetail} />
-      <NewsTitle newsDetail={newsDetail} />
-      <NewsContent newsDetail={newsDetail} />
+    <div className="grid grid-cols-4">
+      <div className="col-span-4 md:col-span-3">
+        <Breadcrumb newsDetail={newsDetail} />
+        <NewsTitle newsDetail={newsDetail} />
+        <NewsContent newsDetail={newsDetail} />
+        <RelatedNewsList newsDetail={newsDetail} />
+      </div>
     </div>
   );
 }

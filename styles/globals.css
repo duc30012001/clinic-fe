@@ -4,7 +4,7 @@
 
 /* @import "react-toastify/dist/ReactToastify.css"; */
 @import "./drawer.css";
-@import "../libs//pagination/style.css";
+@import "../libs/pagination/style.css";
 
 body {
   @apply text-sm;
@@ -15,20 +15,20 @@ body {
   width: 8px;
 }
 
-  /* Track */
+/* Track */
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-  /* Handle */
+/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #b3b3b3;
-  border-radius: 4px; 
+  border-radius: 4px;
 }
 
-  /* Handle on hover */
+/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #9c9c9c; 
+  background: #9c9c9c;
 }
 /* ======================================================== */
 

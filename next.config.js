@@ -18,7 +18,7 @@ const nextConfig = {
     PHONE_NUMBER: "0905 056 883",
     ADDRESS: "Đà Nẵng",
     EMAIL: "tranvanchuong@gmail.com",
-    WEBSITE: "http://www.tranvanchuong.com",
+    WEBSITE: process.env.WEBSITE,
   },
   images: {
     domains: ["icdn.dantri.com.vn", "firebasestorage.googleapis.com"],

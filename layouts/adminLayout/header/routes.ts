@@ -11,7 +11,7 @@ export const adminRoutes = [
   },
   {
     id: 2,
-    label: "Danh mục",
+    label: "Chuyên mục",
     pathname: "/admin/article-category",
   },
   {

@@ -3,6 +3,7 @@ import { CommonParams } from "@/utils/types";
 
 export interface GetListArticleParams extends CommonParams {
   status: Status;
+  article_category_id: string;
 }
 
 export interface UpdateStatusArticlePayload {

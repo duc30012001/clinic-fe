@@ -18,6 +18,6 @@ export const articleCategoryApi = {
   getListArticleCategory(
     params: Partial<GetListArticleCategoryParams>
   ): Promise<ListResponse<ArticleCategory>> {
-    return axiosClient.get("/article-category/list", { params });
+    return axiosClient.get("/danh-muc", { params });
   },
 };
