@@ -4,8 +4,34 @@
 
 /* @import "react-toastify/dist/ReactToastify.css"; */
 @import "./drawer.css";
-@import "../libs//pagination/style.css";
+@import "../libs/pagination/style.css";
 
 body {
   @apply text-sm;
+}
+
+/* ================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #9c9c9c;
+}
+/* ======================================================== */
+
+.ck-content {
+  height: calc(100vh - 200px);
 }

@@ -1,6 +1,7 @@
 import AppContainer from "@/components/appContainer";
 import Pagination from "@/libs/pagination";
 import { PageSize } from "@/utils/constants";
+import { Status } from "@/utils/enum";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { userApi } from "./api";
@@ -26,8 +27,16 @@ const UserFeature = (props: Props) => {
     take: PageSize,
     ...router.query,
   };
+  const dataFilter = {};
+  for (const key in filter) {
+    if (filter[key] === Status.ALL) {
+      dataFilter[key] = undefined;
+    } else {
+      dataFilter[key] = filter[key];
+    }
+  }
 
-  const { data, mutate } = useUserList({ params: filter });
+  const { data, mutate } = useUserList({ params: dataFilter });
   const dataSource = data.data;
   const pagination = data.pagination;
 

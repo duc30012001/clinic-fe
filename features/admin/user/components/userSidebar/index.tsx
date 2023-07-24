@@ -14,16 +14,13 @@ const UserSidebar = ({ onChangeFilter, initialValues }: Props) => {
   const { messages } = useTranslate();
 
   const options = [
+    { value: Status.ALL, label: messages("status.all") },
     { value: Status.ACTIVE, label: messages("status.active") },
-    { value: Status.PENDING, label: messages("status.pending") },
+    // { value: Status.PENDING, label: messages("status.pending") },
     { value: Status.HIDDEN, label: messages("status.hidden") },
   ];
 
-  const {
-    handleSubmit,
-    control,
-    formState: { isSubmitting },
-  } = useForm<GetListUserParams>({
+  const { handleSubmit, control } = useForm<GetListUserParams>({
     defaultValues: {
       ...initialValues,
     },

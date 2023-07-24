@@ -4,6 +4,7 @@ export enum FormDirection {
 }
 
 export enum Status {
+  ALL = "",
   ACTIVE = "1",
   PENDING = "0",
   HIDDEN = "-1",
