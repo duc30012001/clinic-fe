@@ -8,6 +8,8 @@ import { articleApi } from "../../../api";
 import { CreateArticlePayload } from "../../../types";
 import ArticleForm from "./createForm";
 
+const fileName = "content.txt";
+
 interface CreateArticleModalProps {
   closeModal: () => void;
   isOpen: boolean;

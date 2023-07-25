@@ -1,4 +1,5 @@
 import React, { ChangeEvent, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 export type SelectChangeEvent = ChangeEvent<HTMLSelectElement>;
 
@@ -28,7 +29,9 @@ export default function Select({
       name={name}
       ref={htmlRef}
       {...props}
-      className={`mt-2 block w-full appearance-none rounded-md bg-white px-3 py-2.5 text-slate-900 shadow-sm ring-1 ring-slate-300 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+      className={twMerge(
+        `mt-2 block w-full appearance-none rounded-md bg-white px-3 py-2.5 text-slate-900 shadow-sm ring-1 ring-slate-300 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`
+      )}
     >
       {options.map((item) => (
         <option key={item.value} value={item.value}>

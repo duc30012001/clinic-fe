@@ -14,7 +14,7 @@ export function ArticleCategorySelect({ onChangeFilter, dataFilter }: Props) {
   const dataSource = data.data;
 
   return (
-    <div className="flex w-full gap-2">
+    <div className="flex w-full flex-wrap gap-2">
       {dataSource.map((item) => {
         const isSelected = article_category_id === item.id;
         return (

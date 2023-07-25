@@ -13,7 +13,7 @@ export function NewsTitle({ newsDetail }: Props) {
   ).format("HH:mm, DD/MM/YYYY");
   return (
     <div className="mb-5">
-      <h1 className="my-4 text-3xl font-semibold">{title}</h1>
+      <h1 className="my-4 text-2xl font-semibold sm:text-3xl">{title}</h1>
       <div className="flex items-center gap-2">
         <FaRegCalendarAlt /> <span>{date}</span>
       </div>

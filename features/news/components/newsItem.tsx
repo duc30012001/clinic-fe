@@ -14,17 +14,17 @@ const NewsItem = ({ item }: Props) => {
     "DD/MM/YYYY"
   );
   return (
-    <li className="mt-5 flex gap-5 border-t pt-5">
+    <li className="mt-5 flex flex-col gap-5 border-t pt-5 sm:flex-row">
       <Image
         alt={item.article_title}
         src={thumbnail_url}
-        className="w-40 flex-none rounded-md md:w-80"
-        width={160}
-        height={100}
+        className="order-2 w-full flex-none rounded-md sm:order-1 sm:w-40 md:w-80"
+        width={500}
+        height={300}
       />
-      <div>
+      <div className="order-1 sm:order-2">
         <Link href={`/tin-tuc/${item.slug}`}>
-          <h3 className="line-clamp-2 text-xl font-semibold">
+          <h3 className="line-clamp-2 text-lg font-semibold sm:text-xl">
             {item.article_title}
           </h3>
         </Link>

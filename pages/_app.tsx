@@ -1,14 +1,15 @@
 import axiosClient from "@/apiClient";
 import AppLoader from "@/components/appLoader";
+import AppToast from "@/components/appToast";
 import { useLocale } from "@/hooks";
 import { PublicLayout } from "@/layouts";
 import { AppPropsWithLayout } from "@/utils/types";
 import { Inter } from "next/font/google";
 import { IntlProvider } from "react-intl";
-import { SWRConfig } from "swr/_internal";
+import "react-quill/dist/quill.snow.css";
 
-import AppToast from "@/components/appToast";
 import "@/styles/globals.css";
+import { SWRConfig } from "swr/_internal";
 
 const inter = Inter({ subsets: ["latin"] });
 
