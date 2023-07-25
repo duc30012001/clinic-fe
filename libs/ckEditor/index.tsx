@@ -41,6 +41,7 @@ const TextEditor = ({ height, onChange, value, name, htmlRef }: Props) => {
       "|",
       "link",
       "insertTable",
+      "insertImage",
       "|",
       "undo",
       "redo",

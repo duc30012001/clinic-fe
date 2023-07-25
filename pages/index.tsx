@@ -1,10 +1,9 @@
-import { useTranslate } from "@/hooks";
+import AppointmentBooking from "@/features/appointment";
 
 export default function Home() {
-  const { messages } = useTranslate();
   return (
     <main>
-      <h1 className="text-3xl">{messages("common.password")}</h1>Home
+      <AppointmentBooking />
     </main>
   );
 }

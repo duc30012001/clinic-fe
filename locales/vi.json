@@ -108,5 +108,10 @@
     "name": "Tên bài viết",
     "thumbnail": "Thumbnail",
     "related": "Cùng chuyên mục"
+  },
+  "appointment": {
+    "appointmentTime": "Thời gian hẹn",
+    "reason": "Triệu chứng",
+    "address": "Địa chỉ"
   }
 }

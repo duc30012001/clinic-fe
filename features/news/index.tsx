@@ -80,7 +80,7 @@ export default function News({}: Props) {
         dataFilter={dataFilter}
       />
       <div className="grid grid-cols-4">
-        <div className="col-span-4 md:col-span-3">
+        <div className="col-span-4 lg:col-span-3">
           <NewsList dataSource={dataSource} />
           <Pagination
             onChange={onChangePage}
@@ -92,7 +92,6 @@ export default function News({}: Props) {
             hideOnSinglePage
           />
         </div>
-        <div className="col-span-4 md:col-span-1"></div>
       </div>
     </div>
   );

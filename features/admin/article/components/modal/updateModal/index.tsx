@@ -29,14 +29,11 @@ export const UpdateArticleModal = ({
     thumbnail: string,
     dataDetailRef: MutableRefObject<Article | null>
   ) {
-    console.log("thumbnail:", thumbnail);
     const dataSubmit = structuredClone(values);
-    console.log("dataSubmit:", dataSubmit);
     if (
       dataSubmit.thumbnail &&
       dataDetailRef.current?.thumbnail_url !== thumbnail
     ) {
-      console.log("dataSubmit.thumbnail:", dataSubmit.thumbnail);
       const thumbnail: File = (await resizeImageFile({
         file: dataSubmit.thumbnail,
       })) as File;

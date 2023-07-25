@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 export interface LabelProps
   extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -16,7 +17,9 @@ export default function Label({
     (label && (
       <label
         htmlFor={htmlFor}
-        className={`block font-semibold text-gray-900 dark:text-white ${className}`}
+        className={twMerge(
+          `block font-semibold text-gray-900 dark:text-white ${className}`
+        )}
       >
         {label} {required && <span className="text-red-600">*</span>}
       </label>
